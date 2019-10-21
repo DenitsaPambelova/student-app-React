@@ -1,11 +1,6 @@
-# React MERN Stack App
-
-React MERN Stack CRUD app tutorial - Create frontend and backend with React, Node, Express, mongoDB. and learn to consume REST APIs with React Axios.
+# React Student App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Step by Step Tutorial
-[React MERN Stack CRUD App Tutorial](https://www.positronx.io/react-mern-stack-crud-app-tutorial/)
 
 ## Available Scripts
 
