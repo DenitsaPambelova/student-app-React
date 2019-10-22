@@ -1,8 +1,13 @@
-# React Student App
+# Student app React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is mini app -a student registration system for CRUD operations built with React and MondoDB. 
+It is possible to add new Student with its properties,edit and delete them.
+as well as view students' list. It uses MongoDB as backend.
 
-## Available Scripts
+How to run:
+
+git clone https://github.com/DenitsaPambelova/student-app-React.git
+cd student-app-React
 
 In the project directory, you can run:
 
@@ -16,12 +21,13 @@ You will also see any lint errors in the console.
 
 ### Start Backend Server
 
-- Get inside the `backend` folder
+- Get inside the `backend` folder  / cd backend/
 - Run `npm install` to install required packages 
 - Open terminal run `nodemon server.js`
 - Open other terminal run `mongod`
 
 Open API URL on [http://localhost:4000/students](http://localhost:4000/students) to view it in the browser.
+
 
 
 ### `npm test`
