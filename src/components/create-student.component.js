@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import { MongooseDocument } from 'mongoose';
 import moment from "moment";
@@ -41,7 +43,7 @@ export default class CreateStudent extends Component {
       isDisabled: false,
       technicalSkillsCourses: '',
       personalPresentation:'',
-      studyFromHome: ''
+      studyFromHome: false
     }
   }
 
@@ -69,9 +71,6 @@ export default class CreateStudent extends Component {
   onChangeEnglishLevel(e){
     this.setState({ englishLevel: e.target.value })
   }
-  // onChangeAvailableToStart(event){
-  //   this.setState({ availableToStart: event.target.value})
-  // }
   onChangeTechnicalSkillsCourses(e){
     this.setState({ technicalSkillsCourses: e.target.value })
   }
@@ -106,7 +105,6 @@ export default class CreateStudent extends Component {
       showComponent: this.state.showComponent,
       englishLevel:this.state.englishLevel,
       selectedDay:this.state.selectedDay,
-      //availabletoStart: this.state.availabletoStart
       technicalSkillsCourses: this.state.technicalSkillsCourses,
       personalPresentation:this.state.personalPresentation,
       studyFromHome: this.state.studyFromHome
@@ -127,51 +125,44 @@ export default class CreateStudent extends Component {
       selectedDay: '',
       technicalSkillsCourses: '',
       personalPresentation:'',
-      // studyFromHome: ''
+      studyFromHome: ''
     });
 
-    //console.log('You have selected:', this.state.wayofCommunication);
   }
 
   render() {
     const { selectedDay, isDisabled, isEmpty } = this.state;
     return (<div className="form-wrapper">
       <Form onSubmit={this.onSubmit}>
-        <Form.Group controlId="name">
+      <Form.Row>
+        <Form.Group as={Col} controlId="name">
           <Form.Label>Name:</Form.Label>
           <Form.Control type="text" value={this.state.name} onChange={this.onChangeName} />
         </Form.Group>
 
-        <Form.Group controlId="email">
+        <Form.Group  as={Col} controlId="email">
           <Form.Label>Email:</Form.Label>
           <Form.Control type="email" value={this.state.email} onChange={this.onChangeEmail} />
         </Form.Group>
+        </Form.Row>
 
-        <Form.Group controlId="age">
+        <Form.Row>
+        <Form.Group as={Col} controlId="age">
           <Form.Label>Age:</Form.Label>
           <Form.Control type="number" value={this.state.age} onChange={this.onChangeAge} />
         </Form.Group>
 
-        <Form.Group controlId="phoneNumber">
-          <Form.Label>Phone Number:</Form.Label>
+        <Form.Group as={Col} controlId="phoneNumber">
+          <Form.Label>Phone number:</Form.Label>
           <Form.Control type="number" value={this.state.phoneNumber} onChange={this.onChangePhoneNumber} />
-        </Form.Group><br/>
+        </Form.Group>
+        </Form.Row><br/>
 
-      <p>Way of communication:</p>
-        <div>
-        <label>
-          <input
-            type="radio"
-            name="a"
-            onChange={this.handleChange}
-            checked={this.state.showComponent}
-          />{" "}
-          Phone  {" "}
-        </label>
-        </div>
-        <div>
-        <label>
-          
+        <Form.Row>
+        <Form.Group as={Col} controlId="WayofCommunication">
+           <p>Way of communication:</p>
+            <div> <input type="radio"  name="a"  onChange={this.handleChange} checked={this.state.showComponent} />{" "}   Phone  {" "}</div>
+             
           <input
             type="radio"
             name="a"
@@ -179,12 +170,9 @@ export default class CreateStudent extends Component {
             checked={!this.state.showComponent}
           />{" "}
           Email{" "}
-        </label>
-       {/* {this.state.showComponent ? <div>Phone</div> : <div>Email</div>} */}
-      </div><br/>
-        
-
-       <Form.Group controlId="EnglishLevel">
+     
+       </Form.Group>
+       <Form.Group as={Col} controlId="EnglishLevel">
        <Form.Label>English level:</Form.Label>
        <div>
         <select id="lang" onChange={this.onChangeEnglishLevel.bind(this)} value={this.state.englishLevel}>
@@ -198,25 +186,12 @@ export default class CreateStudent extends Component {
         </select>
         
       </div>
-        </Form.Group> <br/>
+        </Form.Group>
+       </Form.Row>
 
-
-        {/* <input type="date" onChange={this.onChangeAvailableToStart}/><br/> */}
-       {/* <Calendar format='DD/MM/YYYY' date={this.state.availabletoStart} /> */}
-          
-        {/* <div>
-        <DatePicker
-              selected={moment(this.state.availableToStart).format('YYYY-mm-dd') }
-              onChange={this.onChangeAvailableToStart}
-              //value={this.state.availabletoStart}
-              name="availableToStart"
-              dateFormat="YYYY-MM-dd"
-            />
-        </div><br/>
-        <h1>{}</h1>  */}
         <div>
         <p>
-          {isEmpty && 'Please type or pick a day:'}
+          {isEmpty && 'Available to start:'}
           {!isEmpty && !selectedDay && 'Selected start date:'}
           {selectedDay && isDisabled && 'This day is disabled'}
           {selectedDay &&
@@ -236,29 +211,25 @@ export default class CreateStudent extends Component {
       </div><br/>
       
 
-       {/* <Form.Group controlId="availableToStart">
-          <Form.Label>Available To Start:</Form.Label>
-          <Form.Control type="date" value={this.state.availableToStart} onChange={this.onChangeAvailableToStart} />
-     
-        </Form.Group>  */}
       
         <Form.Group controlId="technicalSkillsAndCourses">
-          <Form.Label>Technical Skills and Courses:</Form.Label>
+          <Form.Label>Technical skills and courses:</Form.Label>
           <Form.Control type="text" value={this.state.technicalSkillsCourses} onChange={this.onChangeTechnicalSkillsCourses} />
         </Form.Group>
 
         
         <Form.Group controlId="personalPresentation">
-          <Form.Label>Personal Presentation:</Form.Label>
+          <Form.Label>Personal presentation:</Form.Label>
           <Form.Control type="text" value={this.state.personalPresentation} onChange={this.onChangPersonalPresentaion} />
         </Form.Group>
  
-          <Form.Group controlId="studyFromHome">
-           <span>Study from home </span> 
-            <input type="checkbox" name="yes" value={this.state.studyFromHome}  onChange={this.onChangeStudyFromHome}/> 
-          </Form.Group>  
 
-        <Button variant="danger" size="lg" block="block" type="submit">
+          <Form.Group controlId="studyFromHome">
+             <Form.Check type="checkbox" name="yes" checked={this.state.studyFromHome}
+                    onChange={this.onChangeStudyFromHome} label="Study from home" />
+           </Form.Group>
+
+        <Button variant="primary" size="lg" block="block" type="submit">
           Create Student
         </Button>
       </Form>

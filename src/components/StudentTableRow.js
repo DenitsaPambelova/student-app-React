@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import moment from "moment";
+//import moment from "moment";
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 export default class StudentTableRow extends Component {
 
@@ -23,6 +24,7 @@ export default class StudentTableRow extends Component {
     render() {
        // const day=moment(this.props.obj.selectedDay,'DD-MM-YYYY');
         return (
+            
             <tr>
                 <td>{this.props.obj.name}</td>
                 <td>{this.props.obj.email}</td>
@@ -42,6 +44,8 @@ export default class StudentTableRow extends Component {
                     <Button onClick={this.deleteStudent} size="sm" variant="danger">Delete</Button>
                 </td>
             </tr>
+           
+         
         );
     }
 }

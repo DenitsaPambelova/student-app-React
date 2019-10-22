@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import { MongooseDocument } from 'mongoose';
 import moment from "moment";
 import DayPicker from 'react-day-picker';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
+//import Calendar from 'react-input-calendar'
+
 //import Calendar from 'react-input-calendar'
 
 export default class EditStudent extends Component {
@@ -41,7 +45,7 @@ export default class EditStudent extends Component {
       isDisabled: false,
       technicalSkillsCourses: '',
       personalPresentation:'',
-      studyFromHome: ''
+      studyFromHome: false
     }
   }
 
@@ -144,130 +148,113 @@ export default class EditStudent extends Component {
 
 
   render() {
-   const { selectedDay, isDisabled, isEmpty } = this.state;
-      return (<div className="form-wrapper">
-        <Form onSubmit={this.onSubmit}>
-          <Form.Group controlId="name">
-            <Form.Label>Name:</Form.Label>
-            <Form.Control type="text" value={this.state.name} onChange={this.onChangeName} />
-          </Form.Group>
-  
-          <Form.Group controlId="email">
-            <Form.Label>Email:</Form.Label>
-            <Form.Control type="email" value={this.state.email} onChange={this.onChangeEmail} />
-          </Form.Group>
-  
-          <Form.Group controlId="age">
-            <Form.Label>Age:</Form.Label>
-            <Form.Control type="number" value={this.state.age} onChange={this.onChangeAge} />
-          </Form.Group>
-  
-          <Form.Group controlId="phoneNumber">
-            <Form.Label>Phone Number:</Form.Label>
-            <Form.Control type="number" value={this.state.phoneNumber} onChange={this.onChangePhoneNumber} />
-          </Form.Group><br/>
-  
-        <p>Way of communication:</p>
-          <div>
-          <label>
-            <input
-              type="radio"
-              name="a"
-              onChange={this.handleChange}
-              checked={this.state.showComponent}
-            />{" "}
-            Phone  {" "}
-          </label>
-          </div>
-          <div>
-          <label>
-            
-            <input
-              type="radio"
-              name="a"
-              onChange={this.handleChange}
-              checked={!this.state.showComponent}
-            />{" "}
-            Email{" "}
-          </label>
-         {/* {this.state.showComponent ? <div>Phone</div> : <div>Email</div>} */}
-        </div><br/>
-          
-  
-         <Form.Group controlId="EnglishLevel">
-         <Form.Label>English level:</Form.Label>
-         <div>
-          <select id="lang" onChange={this.onChangeEnglishLevel.bind(this)} value={this.state.englishLevel}>
-            <option value="select">Please select your English Level</option>
-            <option value="A1">A1</option>
-            <option value="A2">A2</option>
-            <option value="B1">B1</option>
-            <option value="B2">B2</option>
-            <option value="C1">C1</option>
-            <option value="C2">C2</option>
-          </select>
-          
-        </div>
-          </Form.Group> <br/>
-  
-  
-          {/* <input type="date" onChange={this.onChangeAvailableToStart}/><br/> */}
-         {/* <Calendar format='DD/MM/YYYY' date={this.state.availabletoStart} /> */}
-            
-          {/* <div>
-          <DatePicker
-                selected={moment(this.state.availableToStart).format('YYYY-mm-dd') }
-                onChange={this.onChangeAvailableToStart}
-                //value={this.state.availabletoStart}
-                name="availableToStart"
-                dateFormat="YYYY-MM-dd"
-              />
-          </div><br/>
-          <h1>{}</h1>  */}
-          <div>
-          <p>
-            {isEmpty && 'Please type or pick a day:'}
-            {!isEmpty && !selectedDay && 'Selected start date:'}
-            {selectedDay && isDisabled && 'This day is disabled'}
-            {selectedDay &&
-              !isDisabled &&
-              `You chose ${selectedDay}`}
-          </p>
-          <DayPickerInput
-            value={selectedDay}
-            onDayChange={this.handleDayChange}
-            dayPickerProps={{
-              selectedDays: selectedDay,
-              disabledDays: {
-                daysOfWeek: [0, 6],
-              },
-            }}
-          />
-        </div><br/>
-        
-  
-         {/* <Form.Group controlId="availableToStart">
-            <Form.Label>Available To Start:</Form.Label>
-            <Form.Control type="date" value={this.state.availableToStart} onChange={this.onChangeAvailableToStart} />
-       
-          </Form.Group>  */}
-        
-          <Form.Group controlId="technicalSkillsAndCourses">
-            <Form.Label>Technical Skills and Courses:</Form.Label>
-            <Form.Control type="text" value={this.state.technicalSkillsCourses} onChange={this.onChangeTechnicalSkillsCourses} />
-          </Form.Group>
-  
-          
-          <Form.Group controlId="personalPresentation">
-            <Form.Label>Personal Presentation:</Form.Label>
-            <Form.Control type="text" value={this.state.personalPresentation} onChange={this.onChangPersonalPresentaion} />
-          </Form.Group>
-   
-            <Form.Group controlId="studyFromHome">
-             <span>Study from home </span> 
-              <input type="checkbox" name="yes" value={this.state.studyFromHome}  onChange={this.onChangeStudyFromHome}/> 
-            </Form.Group>  
+    const { selectedDay, isDisabled, isEmpty } = this.state;
+    return (<div className="form-wrapper">
+      <Form onSubmit={this.onSubmit}>
+      <Form.Row>
+        <Form.Group as={Col} controlId="name">
+          <Form.Label>Name:</Form.Label>
+          <Form.Control type="text" value={this.state.name} onChange={this.onChangeName} />
+        </Form.Group>
 
+        <Form.Group  as={Col} controlId="email">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control type="email" value={this.state.email} onChange={this.onChangeEmail} />
+        </Form.Group>
+        </Form.Row>
+
+        <Form.Row>
+        <Form.Group as={Col} controlId="age">
+          <Form.Label>Age:</Form.Label>
+          <Form.Control type="number" value={this.state.age} onChange={this.onChangeAge} />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="phoneNumber">
+          <Form.Label>Phone number:</Form.Label>
+          <Form.Control type="number" value={this.state.phoneNumber} onChange={this.onChangePhoneNumber} />
+        </Form.Group>
+        </Form.Row><br/>
+
+        <Form.Row>
+        <Form.Group as={Col} controlId="WayofCommunication">
+           <p>Way of communication:</p>
+            <div> <input type="radio"  name="a"  onChange={this.handleChange} checked={this.state.showComponent} />{" "}   Phone  {" "}</div>
+             
+          <input
+            type="radio"
+            name="a"
+            onChange={this.handleChange}
+            checked={!this.state.showComponent}
+          />{" "}
+          Email{" "}
+       
+       {/* {this.state.showComponent ? <div>Phone</div> : <div>Email</div>} */}
+       </Form.Group>
+       <Form.Group as={Col} controlId="EnglishLevel">
+       <Form.Label>English level:</Form.Label>
+       <div>
+        <select id="lang" onChange={this.onChangeEnglishLevel.bind(this)} value={this.state.englishLevel}>
+          <option value="select">Please select your English Level</option>
+          <option value="A1">A1</option>
+          <option value="A2">A2</option>
+          <option value="B1">B1</option>
+          <option value="B2">B2</option>
+          <option value="C1">C1</option>
+          <option value="C2">C2</option>
+        </select>
+        
+      </div>
+        </Form.Group>
+       </Form.Row>
+
+        <div>
+        <p>
+          {isEmpty && 'Available to start:'}
+          {!isEmpty && !selectedDay && 'Selected start date:'}
+          {selectedDay && isDisabled && 'This day is disabled'}
+          {selectedDay &&
+            !isDisabled &&
+            `You chose ${selectedDay}`}
+        </p>
+        <DayPickerInput
+          value={selectedDay}
+          onDayChange={this.handleDayChange}
+          dayPickerProps={{
+            selectedDays: selectedDay,
+            disabledDays: {
+              daysOfWeek: [0, 6],
+            },
+          }}
+        />
+      </div><br/>
+      
+
+       {/* <Form.Group controlId="availableToStart">
+          <Form.Label>Available To Start:</Form.Label>
+          <Form.Control type="date" value={this.state.availableToStart} onChange={this.onChangeAvailableToStart} />
+     
+        </Form.Group>  */}
+      
+        <Form.Group controlId="technicalSkillsAndCourses">
+          <Form.Label>Technical skills and courses:</Form.Label>
+          <Form.Control type="text" value={this.state.technicalSkillsCourses} onChange={this.onChangeTechnicalSkillsCourses} />
+        </Form.Group>
+
+        
+        <Form.Group controlId="personalPresentation">
+          <Form.Label>Personal presentation:</Form.Label>
+          <Form.Control type="text" value={this.state.personalPresentation} onChange={this.onChangPersonalPresentaion} />
+        </Form.Group>
+ 
+          {/* <Form.Group controlId="studyFromHome">
+           <span>Study from home </span> 
+            <input type="checkbox" name="yes" value={this.state.studyFromHome}  onChange={this.onChangeStudyFromHome}/> 
+          </Form.Group>   */}
+
+          <Form.Group controlId="studyFromHome">
+             <Form.Check type="checkbox" checked={this.state.studyFromHome}
+                    onChange={this.onChangeStudyFromHome} label="Study from home" />
+           </Form.Group>
         <Button variant="danger" size="lg" block="block" type="submit">
           Update Student
         </Button>
