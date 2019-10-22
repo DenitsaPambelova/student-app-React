@@ -1,13 +1,13 @@
-# React MERN Stack App
+# Student app React
 
-React MERN Stack CRUD app tutorial - Create frontend and backend with React, Node, Express, mongoDB. and learn to consume REST APIs with React Axios.
+This is a simple student registration system for CRUD operations built with React and MondoDB. 
+It performs adding new Student with its properties,edit and delete them as well as view students' list.
+It uses MongoDB as backend.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+How to run:
 
-## Step by Step Tutorial
-[React MERN Stack CRUD App Tutorial](https://www.positronx.io/react-mern-stack-crud-app-tutorial/)
-
-## Available Scripts
+git clone https://github.com/DenitsaPambelova/student-app-React.git
+cd student-app-React
 
 In the project directory, you can run:
 
@@ -21,12 +21,13 @@ You will also see any lint errors in the console.
 
 ### Start Backend Server
 
-- Get inside the `backend` folder
+- Get inside the `backend` folder  / cd backend/
 - Run `npm install` to install required packages 
 - Open terminal run `nodemon server.js`
 - Open other terminal run `mongod`
 
 Open API URL on [http://localhost:4000/students](http://localhost:4000/students) to view it in the browser.
+
 
 
 ### `npm test`
