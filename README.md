@@ -1,7 +1,7 @@
 # Student app React
 
-This is mini app -a student registration system for CRUD operations built with React and MondoDB. 
-It is possible to add new Student with its properties,edit and delete them.
+This is a simple student registration system for CRUD operations built with React and MondoDB. 
+It performs adding new Student with its properties,edit and delete them.
 as well as view students' list. It uses MongoDB as backend.
 
 How to run:
