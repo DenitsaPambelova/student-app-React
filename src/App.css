@@ -13,24 +13,26 @@ body h3 {
 .form-wrapper,
 .table-wrapper {
   max-width: 500px;
-  margin: 0 auto;
+  margin-left: 10px;
 }
 
 .table-wrapper {
-  max-width: 700px;
+  max-width: auto;
 }
 
 .edit-link {
   padding: 7px 10px;
+  padding-bottom: 0.2em;
   font-size: 0.875rem;
   line-height: normal;
+  text-align: center;
   border-radius: 0.2rem;
   color: #fff;
   background-color: #28a745;
   border-color: #28a745;
   margin-right: 10px;
   position: relative;
-  top: 1px;
+  /* //top: 1px; */
 }
 
 .edit-link:hover {
@@ -51,4 +53,22 @@ body h3 {
   height: 20px;
   flex: 0 0 200px;
   margin-left: 10px;
+}
+.delete{
+  padding: 7px 10px;
+  margin-top: 0.4em;
+  font-size: 0.875rem;
+  line-height: normal;
+  border-radius: 0.2rem;
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  margin-right: 10px;
+  position: relative;
+}
+.divider{
+  width:4px;
+  height:auto;
+  display:inline-block;
+  margin-top: 0.3em;
 }

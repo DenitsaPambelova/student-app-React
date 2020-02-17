@@ -24,6 +24,7 @@ export default class CreateStudent extends Component {
     this.handleChange= this.handleChange.bind(this);
     this.onChangeEnglishLevel=this.onChangeEnglishLevel.bind(this);
     this.handleDayChange = this.handleDayChange.bind(this);
+  
    
     this.onChangeTechnicalSkillsCourses=this.onChangeTechnicalSkillsCourses.bind(this);
     this.onChangPersonalPresentaion=this.onChangPersonalPresentaion.bind(this);
@@ -82,6 +83,7 @@ export default class CreateStudent extends Component {
    } 
   handleDayChange(selectedDay, modifiers, dayPickerInput) {
     const input = dayPickerInput.getInput();
+    
     this.setState({
       selectedDay,
       isEmpty: !input.value.trim(),
@@ -129,6 +131,23 @@ export default class CreateStudent extends Component {
     });
 
   }
+  
+
+
+ convertToYYYYMMDD(d) {
+   let  date = new Date(d);
+   let  year = date.getFullYear();
+   let  month = date.getMonth()+1;
+  let   dt = date.getDate();
+
+    if (dt < 10) {
+        dt = '0' + dt;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+    return (year+'-' + month + '-'+dt);
+}
 
   render() {
     const { selectedDay, isDisabled, isEmpty } = this.state;

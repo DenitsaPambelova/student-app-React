@@ -36,12 +36,15 @@ export default class StudentTableRow extends Component {
                 <td>{this.props.obj.technicalSkillsCourses}</td>
                 <td>{this.props.obj.personalPresentation}</td>
                 <td>{this.props.obj.studyFromHome}</td>
-                
                 <td>
+                <div > 
                     <Link className="edit-link" to={"/edit-student/" + this.props.obj._id}>
                         Edit
                     </Link>
-                    <Button onClick={this.deleteStudent} size="sm" variant="danger">Delete</Button>
+                    <div class="divider">
+                    <Button onClick={this.deleteStudent} size="sm" variant="danger" class="delete">Delete</Button>
+                    </div>
+                 </div>
                 </td>
             </tr>
            

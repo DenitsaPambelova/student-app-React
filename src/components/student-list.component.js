@@ -34,7 +34,7 @@ export default class StudentList extends Component {
 
   render() {
     return (<div className="table-wrapper">
-      <Table striped bordered hover>
+      <Table bordered hover>
         <thead>
           <tr>
             <th>Name</th>
@@ -47,6 +47,7 @@ export default class StudentList extends Component {
             <th>Technical skills and courses</th>
             <th>Personal presentation</th>
             <th>Study from home</th>
+            <th>Edit or Delete</th>
 
           </tr>
         </thead>

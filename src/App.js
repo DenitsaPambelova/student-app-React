@@ -21,15 +21,15 @@ function App() {
           <Container>
 
             <Navbar.Brand>
-              <Link to={"/create-student"} className="nav-link">
-                React Students App
+              <Link to={"/create-student"} className="nav-link" className="justify-content-center">
+                Students Application manager
               </Link>
             </Navbar.Brand>
 
             <Nav className="justify-content-end">
               <Nav>
                 <Link to={"/create-student"} className="nav-link">
-                  Create Student
+                  Create application
                 </Link>
               </Nav>
 
@@ -41,7 +41,7 @@ function App() {
 
               <Nav>
                 <Link to={"/student-list"} className="nav-link">
-                  Student List
+                  Students applications list
                 </Link>
               </Nav>
             </Nav>

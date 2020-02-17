@@ -21,7 +21,9 @@ let studentSchema = new Schema({
     type: String,  required: true 
   },
   selectedDay: {
-     type: Date , required:true, default: Date.now(),
+    type: date=new Date (ISODate().toString() + 'UTC').replace("T", " ").replace("Z", " "),
+    required: true
+    
   },
   technicalSkillsCourses:{
     type: String
