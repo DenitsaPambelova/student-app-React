@@ -1,7 +1,12 @@
 # Student application manager
 
+<<<<<<< HEAD
 This is a simple student registration system for CRUD operations built with React front-end.
 It performs adding new student application with its properties, update, edit and delete them as well as view students applications list.
+=======
+This is a simple student registration system for CRUD operations built with React and MongoDB. 
+It performs adding new Student with its properties,edit and delete them as well as view students' list.
+>>>>>>> 85a4a1940985015f110c6fe083d91b703fcde277
 It uses MongoDB as backend.
 
 How to run:
